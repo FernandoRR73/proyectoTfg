@@ -1,0 +1,54 @@
+/* PosicionesConstructores.css */
+.constructor-card {
+  border-top: 1px solid #4c4c4c;
+  border-left: 1px solid #4c4c4c;
+  border-right: 1px solid #4c4c4c;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-bottom: 20px;
+  border-bottom: 0px;
+}
+
+.card-row {
+  margin-bottom: 10px;
+}
+
+.card-row:last-child {
+  margin-bottom: 0;
+}
+
+.position, .points {
+  font-size: 18px;
+}
+
+.constructor-name {
+  font-size: 24px;
+}
+
+.constructor-logo, .car-image, .driver-photo {
+  height: 60px;
+}
+
+.drivers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.driver {
+  text-align: center;
+}
+
+.driver img {
+  display: block;
+  margin: 0 auto;
+  height: 60px;
+}
+
+/* Desfase en una de las columnas */
+.offset-top {
+  margin-top: 50px;
+}

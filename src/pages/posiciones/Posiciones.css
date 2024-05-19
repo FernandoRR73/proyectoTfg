@@ -1,0 +1,73 @@
+/* Posiciones.css */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.constructor-info {
+  display: flex;
+  align-items: center;
+}
+
+.constructor-info span {
+  margin-right: 10px;
+}
+
+.constructores > img {
+  height: 50px;
+}
+
+.ferrari:hover {
+  background-color: #FF000063;
+}
+
+.red_bull:hover {
+  background-color: #0047AB63;
+}
+
+.mercedes:hover {
+  background-color: #00A5A563;
+}
+
+.mclaren:hover {
+  background-color: #E65F0063;
+}
+
+.aston_martin:hover {
+  background-color: #00594C63;
+}
+
+.alpine:hover {
+  background-color: #0072C263;
+}
+
+.rb:hover {
+  background-color: #101C2663;
+}
+
+.sauber:hover {
+  background-color: #09B94763;
+}
+
+.williams:hover {
+  background-color: #0041ab63;
+}
+
+.haas:hover {
+  background-color: #70707063;
+}

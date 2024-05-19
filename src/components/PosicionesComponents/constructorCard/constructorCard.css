@@ -1,0 +1,48 @@
+/* constructorCard.css */
+.constructor-card {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 0px;;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-row {
+  margin-bottom: 10px;
+}
+
+.card-row:last-child {
+  margin-bottom: 0;
+}
+
+.position, .points {
+  font-size: 18px;
+}
+
+.constructor-name {
+  font-size: 24px;
+}
+.team-car{
+  width: 100%;
+}
+
+.drivers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.driver {
+  text-align: center;
+}
+
+.driver img {
+  display: block;
+  margin: 0 auto;
+  height: 60px;
+}
+
+/* Desfase en una de las columnas */
+.offset-top {
+  margin-top: 20px;
+}
