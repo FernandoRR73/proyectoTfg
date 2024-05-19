@@ -2,13 +2,19 @@
 .constructor-card {
   padding: 10px;
   background-color: #fff;
-  border-radius: 0px;;
+  border-radius: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .card-row {
   margin-bottom: 10px;
+}
+
+/* styles.css */
+.team-logo {
+  height: 60px;
+  width: auto;
 }
 
 .card-row:last-child {
