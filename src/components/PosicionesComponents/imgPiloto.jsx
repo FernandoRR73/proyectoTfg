@@ -26,7 +26,7 @@ const driver = {
   'sargeant': 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LOGSAR01_Logan_Sargeant/logsar01.png',
 };
 
-const imgPiloto = ({ driverId }) => {
+const ImgPiloto = ({ driverId }) => {
   const imgUrl = driver[driverId.toLowerCase()];
 
   return (
@@ -38,4 +38,4 @@ const imgPiloto = ({ driverId }) => {
   );
 };
 
-export default imgPiloto;
+export default ImgPiloto;

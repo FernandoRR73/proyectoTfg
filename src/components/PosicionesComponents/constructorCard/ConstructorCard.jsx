@@ -3,7 +3,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './constructorCard.css';
 import TeamLogo from '../TeamLogo';
-import ImgPiloto from '../imgPiloto';
+import ImgPiloto from '../ImgPiloto';
 import TeamCar from '../TeamCar'; // Importar el nuevo componente
 
 const ConstructorCard = ({ constructor, drivers }) => {
