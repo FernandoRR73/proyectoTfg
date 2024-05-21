@@ -14,6 +14,7 @@ import PosicionesPilotos from "./pages/posiciones/PosicionesPiloto.js";
 import PosicionesConstructores from "./pages/posiciones/PosicionesConstructores.js";
 import Login from "./pages/Login.js";
 import Registration from "./pages/Registration.js";
+import ConstructorDetailPage from "./components/ConstructorDetailPage/ConstructorDetail.jsx";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="posiciones/pilotos" element={<PosicionesPilotos/>}></Route>
         <Route path="posiciones/constructores" element={<PosicionesConstructores/>}></Route>
         <Route path="/drivers/:driverId" element={<DriverDetailPage/>}/>
+        <Route path="/constructors/:constructorId" component={<ConstructorDetailPage/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/Registro" element={<Registration/>}></Route>
       </Routes>

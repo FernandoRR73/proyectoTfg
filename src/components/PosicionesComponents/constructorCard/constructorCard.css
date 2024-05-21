@@ -1,20 +1,25 @@
 /* constructorCard.css */
 .constructor-card {
+  border-top: 1px solid #4c4c4c;
+  border-left: 1px solid #4c4c4c;
+  border-right: 1px solid #4c4c4c;
   padding: 10px;
   background-color: #fff;
   border-radius: 0px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom: 0px;
+  margin-bottom: 20px;
+  border-bottom: 0px;
+  transition: border-color 0.3s, border-width 0.3s;
+}
+a{
+  color: black;
+  text-decoration: none;
 }
 
 .card-row {
   margin-bottom: 10px;
-}
-
-/* styles.css */
-.team-logo {
-  height: 60px;
-  width: auto;
 }
 
 .card-row:last-child {
@@ -25,11 +30,28 @@
   font-size: 18px;
 }
 
+.constructor-info {
+  display: flex;
+  align-items: center;
+}
+
 .constructor-name {
   font-size: 24px;
+  margin-right: 10px;
 }
-.team-car{
+
+.constructor-logo {
+  height: 60px;
+}
+
+.car-image-container {
   width: 100%;
+  text-align: center;
+}
+
+.team-car {
+  width: 100%;
+  height: auto;
 }
 
 .drivers {
@@ -42,13 +64,55 @@
   text-align: center;
 }
 
-.driver-img {
+.driver-photo {
   display: block;
   margin: 0 auto;
-  height: 60px;
+  height: 100px;
 }
+
 
 /* Desfase en una de las columnas */
 .offset-top {
-  margin-top: 20px;
+  margin-top: 50px;
+}
+
+/* Hover effect with different border colors based on constructor */
+.col-md-6:hover .constructor-card {
+  border-width: 5px;
+}
+
+.col-md-6:hover .constructor-card.ferrari {
+  border-color: red;
+}
+
+.col-md-6:hover .constructor-card.red_bull {
+  border-color: blue;
+}
+
+.col-md-6:hover .constructor-card.mercedes {
+  border-color: teal;
+}
+
+.col-md-6:hover .constructor-card.mclaren {
+  border-color: orange;
+}
+
+.col-md-6:hover .constructor-card.aston_martin {
+  border-color: green;
+}
+
+.col-md-6:hover .constructor-card.rb {
+  border-color: navy;
+}
+
+.col-md-6:hover .constructor-card.sauber {
+  border-color: lime;
+}
+
+.col-md-6:hover .constructor-card.williams {
+  border-color: royalblue;
+}
+
+.col-md-6:hover .constructor-card.haas {
+  border-color: gray;
 }

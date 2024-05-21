@@ -1,5 +1,6 @@
 // TeamLogo.js
 import React from 'react';
+import './teamLogo.css';
 
 // Array con las URL de los logotipos de los equipos de F1
 const constructorLogo = {

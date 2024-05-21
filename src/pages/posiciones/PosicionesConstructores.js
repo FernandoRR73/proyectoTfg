@@ -1,6 +1,6 @@
-// PosicionesConstructores.jsx
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 import ConstructorCard from '../../components/PosicionesComponents/constructorCard/ConstructorCard';
 import ApiConstructor from '../../components/ApiConstructor';
 import ApiPiloto from '../../components/ApiPiloto';
@@ -18,7 +18,6 @@ const PosicionesConstructores = () => {
     setDriverStandings(data);
   };
 
-  // Combine constructor and driver data
   const combinedData = constructorStandings.map(constructor => ({
     ...constructor,
     drivers: driverStandings.filter(driver => driver.constructorId === constructor.constructorId)
@@ -32,7 +31,9 @@ const PosicionesConstructores = () => {
       <div className="row">
         {combinedData.map((constructor, index) => (
           <div key={index} className={`col-md-6 col-lg-6 ${index % 2 !== 0 ? 'offset-top' : ''}`}>
-            <ConstructorCard constructor={constructor} drivers={constructor.drivers} />
+            <Link to={`/constructor/${constructor.constructorId}`} className={` ${constructor.constructorId}`}>
+              <ConstructorCard constructor={constructor} drivers={constructor.drivers} />
+            </Link>
           </div>
         ))}
       </div>
