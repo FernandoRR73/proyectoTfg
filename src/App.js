@@ -28,7 +28,7 @@ function App() {
         <Route path="posiciones/pilotos" element={<PosicionesPilotos/>}></Route>
         <Route path="posiciones/constructores" element={<PosicionesConstructores/>}></Route>
         <Route path="/drivers/:driverId" element={<DriverDetailPage/>}/>
-        <Route path="/constructors/:constructorId" component={<ConstructorDetailPage/>}></Route>
+        <Route path="/constructor/:constructorId" element={<ConstructorDetailPage/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/Registro" element={<Registration/>}></Route>
       </Routes>
