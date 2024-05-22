@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main  # Cambia esto si usas otra rama
+      - main  # Cambia esto si usas otras rama
 
 jobs:
   deploy:
@@ -37,5 +37,5 @@ jobs:
             cd /home/ec2-user/app
             npm install
             pm2 stop all
-            pm2 start server/App.js
+            pm2 start server/App.js 
           EOF
