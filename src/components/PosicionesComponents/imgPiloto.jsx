@@ -1,4 +1,4 @@
-// imgPiloto
+// ImgPiloto
 import React from 'react';
 
 
