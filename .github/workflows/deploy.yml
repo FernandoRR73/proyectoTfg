@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - master  # Cambia esto si usas otras rama
+      - main
 
 jobs:
   deploy:
@@ -11,15 +11,21 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
+
+      - name: List files in PosicionesComponents
+        run: ls -R src/components/PosicionesComponents
 
       - name: Install dependencies
         run: npm install
+
+      - name: Clean npm cache
+        run: npm cache clean --force
 
       - name: Build React app
         run: npm run build --if-present
@@ -32,10 +38,12 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 400 private_key.pem
+          # Verificar la creación de la llave privada
+          ls -l private_key.pem
           scp -o StrictHostKeyChecking=no -i private_key.pem -r * $EC2_USER@$EC2_HOST:/home/ec2-user/app
           ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
             cd /home/ec2-user/app
             npm install
             pm2 stop all
-            pm2 start server/App.js 
+            pm2 start server/App.js
           EOF
