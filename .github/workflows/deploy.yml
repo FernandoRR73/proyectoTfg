@@ -37,5 +37,5 @@ jobs:
             cd /home/ec2-user/app
             npm install
             pm2 stop all
-            pm2 start server.js
+            pm2 start server/App.js
           EOF
