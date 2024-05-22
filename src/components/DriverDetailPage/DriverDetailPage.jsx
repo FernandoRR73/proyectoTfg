@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ImgPiloto from '../../components/PosicionesComponents/ImgPiloto';//fallo
+import ImgPiloto from '../../components/PosicionesComponents/ImgPiloto';//fall
 import DorsalPiloto from '../../components/PosicionesComponents/DorsalPiloto';
 import CountryFlag from '../CountryFlag';
 import DriverCarousel from '../DriverCarousel/DriverCarousel';
