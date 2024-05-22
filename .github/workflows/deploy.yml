@@ -1,0 +1,41 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si usas otra rama
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build --if-present
+
+      - name: Deploy to EC2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          EC2_USER: 'ec2-user'
+          EC2_HOST: '3.91.35.69'
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 400 private_key.pem
+          scp -o StrictHostKeyChecking=no -i private_key.pem -r * $EC2_USER@$EC2_HOST:/home/ec2-user/app
+          ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
+            cd /home/ec2-user/app
+            npm install
+            pm2 stop all
+            pm2 start server/App.js
+          EOF
