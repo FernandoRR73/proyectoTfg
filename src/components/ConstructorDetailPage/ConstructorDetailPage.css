@@ -45,3 +45,50 @@
 .driver-dorsal {
   margin-top: 10px;
 }
+
+.table-no-border {
+  border: none;
+}
+
+.table-no-border th,
+.table-no-border td {
+  border: none;
+}
+
+.hover.ferrari {
+  border-color: red !important;
+}
+
+.hover.red_bull {
+  border-color: blue !important;
+}
+
+.hover.mercedes {
+  border-color: teal !important;
+}
+
+.hover.mclaren {
+  border-color: orange !important;
+}
+
+.hover.aston_martin {
+  border-color: green !important;
+}
+
+.hover.rb {
+  border-color: navy !important;
+}
+
+.hover.sauber {
+  border-color: lime !important;
+}
+
+.hover.williams {
+  border-color: royalblue !important;
+}
+
+.driver-detail {
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  border-radius: 0px;
+}
