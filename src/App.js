@@ -16,7 +16,7 @@ import Login from "./pages/Login.js";
 import Registration from "./pages/Registration.js";
 import ConstructorDetailPage from "./components/ConstructorDetailPage/ConstructorDetail.jsx";
 import RaceCalendar from "./components/RaceCalendar/RaceCalendar.jsx";
-
+import CircuitDetail from "./components/CircuitDetail/CircuitDetail.jsx";
 
 function App() {
 
@@ -31,6 +31,7 @@ function App() {
         <Route path="/drivers/:driverId" element={<DriverDetailPage/>}/>
         <Route path="/constructor/:constructorId" element={<ConstructorDetailPage/>}></Route>
         <Route path="/calendar"element={<RaceCalendar/>} ></Route>
+        <Route path="/circuit/:circuitId" element={<CircuitDetail/>} />
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/Registro" element={<Registration/>}></Route>
       </Routes>
