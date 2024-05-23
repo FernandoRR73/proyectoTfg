@@ -1,10 +1,12 @@
-// RaceCalendar.jsx
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CircuitFlag from './CircuitFlags';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RaceCalendar.css';
 
 const RaceCalendar = () => {
   const [races, setRaces] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRaceCalendar = async () => {
@@ -26,6 +28,10 @@ const RaceCalendar = () => {
     return `${hours}:${minutes}`;
   };
 
+  const handleRowClick = (circuitId) => {
+    navigate(`/circuit/${circuitId}`);
+  };
+
   return (
     <div className="container race-calendar">
       <h2 className="my-4">Race Calendar</h2>
@@ -41,8 +47,11 @@ const RaceCalendar = () => {
         </thead>
         <tbody>
           {races.map((race, index) => (
-            <tr key={index}>
-              <td>{race.raceName}</td>
+            <tr key={index} onClick={() => handleRowClick(race.Circuit.circuitId)} style={{ cursor: 'pointer' }}>
+              <td>
+                <CircuitFlag circuitId={race.Circuit.circuitId} />
+                {race.raceName}
+              </td>
               <td>{race.Circuit.circuitName}</td>
               <td>{new Date(race.date).toLocaleDateString()}</td>
               <td>{race.time ? formatTime(race.time) : 'N/A'}</td>

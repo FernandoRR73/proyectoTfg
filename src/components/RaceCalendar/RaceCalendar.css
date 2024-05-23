@@ -24,3 +24,11 @@
 .race-calendar th {
   background-color: #f4f4f4;
 }
+
+.flag-icon {
+  height: 25px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: solid black 1px;
+}
