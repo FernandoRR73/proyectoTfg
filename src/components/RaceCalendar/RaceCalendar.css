@@ -1,0 +1,26 @@
+/* RaceCalendar.css */
+
+.race-calendar {
+  margin-top: 20px;
+}
+
+.race-calendar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.race-calendar table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.race-calendar th, .race-calendar td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.race-calendar th {
+  background-color: #f4f4f4;
+}
