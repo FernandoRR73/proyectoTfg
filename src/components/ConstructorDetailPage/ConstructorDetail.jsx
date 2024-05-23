@@ -97,7 +97,7 @@ const ConstructorDetail = () => {
                     <tr>
                       {drivers.map(driver => (
                         <td key={driver.driverId} className={`text-center driver-detail hover ${constructor.constructorId}`}>
-                          <Link to={`/driver/${driver.driverId}`}>
+                          <Link to={`/drivers/${driver.driverId}`}>
                             <p className="mt-2">{driver.givenName} {driver.familyName}</p>
                             <DorsalPiloto driverId={driver.driverId} className="driver-dorsal" />
                             <p><strong>Points:</strong> {driverPoints[driver.driverId]}</p>
