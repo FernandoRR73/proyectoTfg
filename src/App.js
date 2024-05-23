@@ -15,6 +15,7 @@ import PosicionesConstructores from "./pages/posiciones/PosicionesConstructores.
 import Login from "./pages/Login.js";
 import Registration from "./pages/Registration.js";
 import ConstructorDetailPage from "./components/ConstructorDetailPage/ConstructorDetail.jsx";
+import RaceCalendar from "./components/RaceCalendar/RaceCalendar.jsx";
 
 
 function App() {
@@ -25,10 +26,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/> } />
         <Route path="/about" element={<About/>}></Route>
-        <Route path="posiciones/pilotos" element={<PosicionesPilotos/>}></Route>
-        <Route path="posiciones/constructores" element={<PosicionesConstructores/>}></Route>
+        <Route path="standings/drivers" element={<PosicionesPilotos/>}></Route>
+        <Route path="standings/constructors" element={<PosicionesConstructores/>}></Route>
         <Route path="/drivers/:driverId" element={<DriverDetailPage/>}/>
         <Route path="/constructor/:constructorId" element={<ConstructorDetailPage/>}></Route>
+        <Route path="/calendar"element={<RaceCalendar/>} ></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/Registro" element={<Registration/>}></Route>
       </Routes>
