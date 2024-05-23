@@ -12,7 +12,7 @@ const flags = {
   Canadian: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg',
   German: 'https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg',
   Thai: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_Thailand.svg',
-  Chinese: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_the_People%27s_Republic_of_China.svg',
+  Chinese: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
   French: 'https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg',
   Finnish: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg',
   American: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg'
