@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert, Container, Row, Col } from 'react-bootstrap';
 import { AuthContext } from '../AuthContext';
+import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -24,6 +25,7 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
+        // Verificar la sesión antes de redirigir
         const sessionCheck = await fetch('http://localhost:3001/auth/checkSession', {
           method: 'GET',
           credentials: 'include'
@@ -35,7 +37,7 @@ const LoginForm = () => {
             credentials: 'include'
           });
           const profileData = await profileResponse.json();
-          setUser(profileData);
+          setUser(profileData); // Actualizar el estado del usuario en AuthContext
           navigate('/profile');
         } else {
           setError('Error al verificar la sesión');
