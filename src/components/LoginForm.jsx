@@ -24,7 +24,6 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
-        // Verificar la sesión antes de redirigir
         const sessionCheck = await fetch('http://localhost:3001/auth/checkSession', {
           method: 'GET',
           credentials: 'include'
@@ -36,7 +35,7 @@ const LoginForm = () => {
             credentials: 'include'
           });
           const profileData = await profileResponse.json();
-          setUser(profileData); // Actualizar el estado del usuario en AuthContext
+          setUser(profileData);
           navigate('/profile');
         } else {
           setError('Error al verificar la sesión');
