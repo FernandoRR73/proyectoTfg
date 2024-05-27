@@ -1,36 +1,22 @@
 const express = require('express');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('./config'); // Asegúrate de que esta ruta sea correcta
 
-// Middleware para verificar el token JWT en rutas protegidas
-const checkJwt = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    console.log("Cabecera de autorización completa:", authHeader);
-    if (authHeader) {
-        const token = authHeader.split(' ')[1]; // Bearer <token>
-        console.log("Token recibido:", token);
-
-
-        jwt.verify(token, jwtSecret, (error, user) => {
-            if (error) {
-                return res.status(403).json({ message: 'Token inválido o expirado.' });
-            }
-            req.user = user;
-            next();
-        });
-    } else {
-        return res.status(401).json({ message: 'Acceso denegado. No se proporcionó token.' });
-    }
+const configureMiddleware = (app) => {
+  app.use(cors({
+    origin: 'http://localhost:3002',
+    credentials: true
+  }));
+  app.use(express.json());
 };
 
-// Función para configurar middleware de Express
-const configureMiddleware = (app) => {
-    app.use(cors()); // Usa CORS sin restricciones específicas para desarrollo
-    app.use(express.json()); // Para analizar solicitudes JSON
+const isAuthenticated = (req, res, next) => {
+  if (req.session && req.session.userId) {
+    return next();
+  }
+  return res.status(401).json({ message: 'No está autorizado' });
 };
 
 module.exports = {
-    configureMiddleware,
-    checkJwt
+  configureMiddleware,
+  isAuthenticated
 };

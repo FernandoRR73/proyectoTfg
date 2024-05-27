@@ -1,42 +1,39 @@
-// Login.js
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 import { useNavigate } from 'react-router-dom';
 
-
-const Login = ({ setIsLoggedIn }) => {
-
+const Login = () => {
   const navigate = useNavigate();
+
   const handleLogin = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch('http://localhost:3001/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
+        credentials: 'include' // Asegúrate de enviar las cookies de sesión
       });
 
       if (response.ok) {
-        // Si el inicio de sesión es exitoso, redireccionar a la página de usuario
-        setIsLoggedIn(true);
-        navigate('/user');
-        
+        navigate('/profile'); // Redirige al usuario a la página de perfil después de un inicio de sesión exitoso
+        return true;
       } else {
-        // Si hay un error en el inicio de sesión, lanzar un error
-        throw new Error('Credenciales inválidas');
+        const data = await response.json();
+        console.error('Error en el inicio de sesión:', data.message);
+        return false;
       }
     } catch (error) {
-      // Capturar y manejar errores de red o del servidor
-      console.error('Error en el inicio de sesión:', error.message);
+      console.error('Error al enviar datos de inicio de sesión:', error);
+      return false;
     }
   };
 
   return (
-    <>
-      <h1>Inicio de sesión</h1>
-      <LoginForm handleLogin={handleLogin}/>
-    </>
+    <div>
+      <LoginForm handleLogin={handleLogin} />
+    </div>
   );
 };
 

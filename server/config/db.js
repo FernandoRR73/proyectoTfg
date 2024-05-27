@@ -1,27 +1,46 @@
-// Importar el módulo sqlite3
 const sqlite3 = require('sqlite3').verbose();
+const { DB_FILE } = require('./config');
 
-// Función para inicializar la base de datos
-const initializeDatabase = () => {
-    db.serialize(() => {
-        db.run(`CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT,
-                    password TEXT,
-                    role TEXT DEFAULT 'basic'
-                )`);
-    });
-};
+const db = new sqlite3.Database(DB_FILE, (err) => {
+  if (err) {
+    console.error('Error al abrir la base de datos', err.message);
+  } else {
+    console.log('Conexión exitosa a la base de datos SQLite');
+    db.run(`CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE,
+      username TEXT NOT NULL UNIQUE,
+      password TEXT NOT NULL,
+      avatar TEXT
+    )`);
 
-// Crear o abrir la base de datos
-let db = new sqlite3.Database('./db.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
-    if (err) {
-        console.error('Error al abrir la base de datos', err.message);
-    } else {
-        console.log('Conectado a la base de datos SQLite.');
-        initializeDatabase(); // Llama a la función después de abrir la base de datos correctamente
-    }
+    db.run(`CREATE TABLE IF NOT EXISTS forums (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      description TEXT
+    )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS threads (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      forum_id INTEGER,
+      user_id INTEGER,
+      title TEXT NOT NULL,
+      content TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (forum_id) REFERENCES forums(id),
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS messages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      thread_id INTEGER,
+      user_id INTEGER,
+      content TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (thread_id) REFERENCES threads(id),
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )`);
+  }
 });
 
-// Exportar la instancia de la base de datos para su uso en otras partes de la aplicación
 module.exports = db;

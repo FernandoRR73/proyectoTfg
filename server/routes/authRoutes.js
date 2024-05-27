@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const { body, validationResult } = require('express-validator');
-const { register, login } = require('../controllers/authController');
+const authController = require('../controllers/authController');
+const multer = require('multer');
+const path = require('path');
 
-// Middleware para validar los resultados de las validaciones
-const validate = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    next();
-};
+// Configuración de multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../uploads/'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
 
-router.post('/register', [
-    // Definir validaciones para el registro
-    body('username', 'El nombre de usuario debe tener al menos 5 caracteres').isLength({ min: 5 }),
-    body('password', 'La contraseña debe tener al menos 6 caracteres').isLength({ min: 6 }),
-    validate // Usar el middleware de validación
-], register);
+const upload = multer({ storage: storage });
 
-router.post('/login', [
-    // Definir validaciones para el login
-    body('username', 'El nombre de usuario es requerido').notEmpty(),
-    body('password', 'La contraseña es requerida').notEmpty(),
-    validate // Usar el middleware de validación
-], login);
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.get('/checkSession', authController.checkSession);
+router.post('/logout', authController.logout);
+router.post('/setSession', authController.setSession);
+router.post('/uploadAvatar', upload.single('avatar'), authController.uploadAvatar);
+router.get('/profile', authController.getUserProfile);
+router.put('/updateUser', authController.updateUser);
+router.delete('/deleteUser', authController.deleteUser);
 
 module.exports = router;
