@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert, Container, Row, Col } from 'react-bootstrap';
 import { AuthContext } from '../AuthContext';
-import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
