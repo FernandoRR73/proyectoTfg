@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to EC2
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          EC2_USER: 'debian'
+          EC2_USER: 'ubuntu'
           EC2_HOST: '34.229.75.77'
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
@@ -46,5 +46,5 @@ jobs:
             npm install
             pm2 stop all
             pm2 start server/App.js
+            pm2 save
           EOF
-# asdasd
